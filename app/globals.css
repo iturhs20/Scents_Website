@@ -1,8 +1,51 @@
+/* ----------------------------------------------------
+   MUST BE AT THE VERY TOP
+---------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500&display=swap');
+
+/* Tailwind */
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Primary Background Colors */
+  --background: #F5F1E8;
+  --foreground: #4A3F35;
+  
+  /* Brand Colors - Warm & Earthy */
+  --primary-cream: #F9F6F0;
+  --primary-beige: #F5F1E8;
+  --primary-sand: #E8DFD0;
+  
+  /* Accent Colors - Golden & Rose */
+  --accent-gold: #D4A574;
+  --accent-bronze: #C19A6B;
+  --accent-copper: #B8956A;
+  --accent-rose: #D4A5A5;
+  --accent-blush: #E8C4C4;
+  
+  /* Brown Tones - Deep & Rich */
+  --brown-dark: #6B5644;
+  --brown-medium: #8B6F47;
+  --brown-chocolate: #8B4513;
+  --brown-sienna: #A0522D;
+  
+  /* Lavender Hints */
+  --lavender-soft: #D4C4E0;
+  --lavender-mist: #E8E0F0;
+  
+  /* Burgundy/Wine Accent */
+  --wine-deep: #7B3F3F;
+  --wine-soft: #A05858;
+  
+  /* Neutral Grays */
+  --gray-warm: #B8AFA0;
+  --gray-light: #D8D0C0;
+  
+  /* Text Colors */
+  --text-primary: #4A3F35;
+  --text-secondary: #6B5644;
+  --text-light: #8B7355;
+  --text-accent: #8B4513;
 }
 
 @theme inline {
@@ -10,17 +53,87 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  
+  /* Custom Nimiora Colors for Tailwind */
+  --color-nimiora-cream: var(--primary-cream);
+  --color-nimiora-beige: var(--primary-beige);
+  --color-nimiora-gold: var(--accent-gold);
+  --color-nimiora-bronze: var(--accent-bronze);
+  --color-nimiora-rose: var(--accent-rose);
+  --color-nimiora-brown: var(--brown-dark);
+  --color-nimiora-chocolate: var(--brown-chocolate);
+  --color-nimiora-lavender: var(--lavender-soft);
+  --color-nimiora-wine: var(--wine-deep);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Keep light theme even in dark mode for brand consistency */
+    --background: #F5F1E8;
+    --foreground: #4A3F35;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--accent-gold), var(--accent-bronze));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--accent-bronze), var(--brown-chocolate));
+}
+
+/* Selection Color */
+::selection {
+  background: var(--accent-gold);
+  color: white;
+}
+
+::-moz-selection {
+  background: var(--accent-gold);
+  color: white;
+}
+
+/* Smooth Animations */
+* {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+p, a, button, span {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+}
+
+.nav-btn {
+  @apply relative px-4 py-2 text-[#6B5644] hover:text-[#8B4513] transition-colors duration-300 font-light tracking-wide cursor-pointer;
+}
+
+.mobile-nav-btn {
+  @apply block px-4 py-3 text-[#6B5644] hover:text-[#8B4513] hover:bg-[#F9F6F0] transition-all duration-200 font-light tracking-wide w-full text-left;
 }
